@@ -6,6 +6,8 @@ import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 
 import App from '../containers/App';
+
+import GameApp from '../containers/GameApp';
 import GameContainer from '../containers/GameContainer';
 import configureStore from '../store/configureStore';
 
@@ -35,6 +37,7 @@ ReactDOM.render(
       <MuiThemeProvider muiTheme={theme}>
         <div>
           <Route exact path="/" component={App}/>
+          <Route exact path="/games" component={GameApp}/>
           <Route path="/game/:id" component={GameContainer}/>
         </div>
       </MuiThemeProvider>

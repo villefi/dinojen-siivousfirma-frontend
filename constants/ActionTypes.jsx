@@ -1,3 +1,5 @@
+// Mitä actioneita (redux) on olemassa
+
 export const ADD_TODO = 'ADD_TODO';
 export const DELETE_TODO = 'DELETE_TODO';
 export const EDIT_TODO = 'EDIT_TODO';
@@ -13,3 +15,10 @@ export const EDIT_GAME = 'EDIT_GAME';
 export const FETCH_GAMES = 'FETCH_GAMES';
 export const FETCH_GAMES_SUCCESS = 'FETCH_GAMES_SUCCESS';
 export const FETCH_GAMES_FAILURE = 'FETCH_GAMES_FAILURE';
+
+export const FETCH_HOUSES = 'FETCH_HOUSES';
+export const FETCH_HOUSES_SUCCESS = 'FETCH_HOUSES_SUCCESS';
+export const FETCH_HOUSES_FAILURE = 'FETCH_HOUSES_FAILURE';
+export const CLEAN_HOUSE = 'CLEAN_HOUSE';
+export const CLEAN_HOUSES_SUCCESS = 'CLEAN_HOUSES_SUCCESS';
+export const CLEAN_HOUSES_FAILURE = 'CLEAN_HOUSES_FAILURE';
