@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Fill in the blank
+export API_URL=http://localhost:3000/api/v1
+
+echo "Environment variables set!"
