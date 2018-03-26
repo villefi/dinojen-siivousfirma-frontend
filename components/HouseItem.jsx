@@ -11,7 +11,14 @@ class HouseItem extends Component {
     const { house, onClick } = this.props;
     return (
       <div>
-        <ListItem primaryText={house.name} onTouchTap={() => onClick(house.id)}/>
+        
+        <ListItem primaryText={house.name + ' ' + (house.done ? 'siivottu' : 'siivoamatta')} onTouchTap={() => onClick(house.id)}/>
+      
+       {!house.done &&
+        <h3>
+       <ListItem primaryText={house.name + ' on siivoamatta.'}/>
+        </h3>
+      }
       </div>
     );
   }

@@ -9,8 +9,8 @@ import axios from 'axios';
         method: 'get',
    //     url: `${process.env.API_URL}/houses`,
    //     url: `${API_URL}/houses`,
-        url: `http://localhost:3000/api/v1/houses`,
-    headers: []        
+        url: `http://localhost:3000/api/v1/houses` //,
+    // headers: []        
       })
       .then((response) => dispatch(fetchHousesSuccess(response.data)))
       .catch((error) => dispatch(fetchHousesError(error)));
@@ -23,4 +23,21 @@ import axios from 'axios';
   
   export function fetchHousesError(error) {
     return { type: types.FETCH_HOUSES_ERROR, payload : { error: error } };
+  }
+
+  export function cleanHouse(id, state) {
+    return function (dispatch, getState) {
+      dispatch({ type: types.CLEAN_HOUSE });
+      return axios({
+        method: 'post',
+        url: `http://localhost:3000/api/v1/done`,
+        headers: [],        
+        data: { 
+          id: id,
+          state: state
+        }       
+      })
+      .then((response) => dispatch(cleanHouseSuccess(response.data)))
+      .catch((error) => dispatch(cleanHouseError(error)));
+    };
   }

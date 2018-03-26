@@ -5,9 +5,11 @@ import { connect } from 'react-redux';
 class HouseContainer extends Component {
   render() {
     return (
-      <div>
+        <div>
+            Kissi
         {this.props.match.params.id}
-      </div>
+        {this.props.match.params.name}
+        </div>
     );
   }
 }

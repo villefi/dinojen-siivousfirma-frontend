@@ -7,7 +7,7 @@ export function addGame(name) {
 
     return axios({
       method: 'post',
-      url: `${process.env.API_URL}/game`,
+      url: `http://localhost:3000/api/v1/game`,
       headers: [],
       data: {
         name: name
@@ -40,7 +40,7 @@ export function fetchGames() {
 
     return axios({
       method: 'get',
-      url: `${process.env.API_URL}/game`,
+      url: `http://localhost:3000/api/v1/game`,
       headers: []
     })
     .then((response) => dispatch(fetchGamesSuccess(response.data)))

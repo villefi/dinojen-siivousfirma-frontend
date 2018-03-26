@@ -9,7 +9,7 @@ class FetchHousesContainer extends Component {
       const { houseActions } = this.props;
       return (
         <div>
-          <RaisedButton onClick ={ houseActions.fetchHouses }>Näytä talot</RaisedButton>
+            <RaisedButton onClick ={ houseActions.fetchHouses }>Näytä talot</RaisedButton>
         </div>
       );
     }
