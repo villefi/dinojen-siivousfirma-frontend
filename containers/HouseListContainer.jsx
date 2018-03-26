@@ -1,18 +1,25 @@
 import React, { Component, PropTypes } from "react";
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import HouseList from '../components/HouseList';
+import * as HouseActions from '../actions/Houses';
 import { push } from 'react-router-redux';
+
+// const { houses } = {null};
 
 class HouseListContainer extends Component {
 
-  componentDidMount() {
-    // tänne esim. talojen hakeminen ensimmäisellä kerralla kun sivu ladataan
+    componentDidMount() {
+    this.props.houseActions.fetchHouses();
   }
-
+  
   render() {
+    const { houses } = this.props;
+    
     return (
       <div>
         <h3> jee </h3>
+        <HouseList houses={ houses } navigateToHouse={ this.props.navigateToHouse }/>
       </div>
     );
   }
@@ -20,6 +27,7 @@ class HouseListContainer extends Component {
 
 // reactin apufunktio, jolla voidaan tehdä propseista pakollisia
 HouseListContainer.propTypes = {
+  houses: PropTypes.array.isRequired
   
 };
 
@@ -27,13 +35,15 @@ HouseListContainer.propTypes = {
 // kopioi gamelistcontainerista
 function mapStateToProps(state) {
   return {
-
+        houses: state.houses.houses
   };
-}
+ }
 
 // Haetaan tarvittavien actioneiden funktiot propseiksi
 function mapDispatchToProps(dispatch) {
   return {
+    houseActions: bindActionCreators(HouseActions, dispatch),
+    navigateToHouse: (id) => dispatch(push(`/houses/${id}`))
 
   };
 }
