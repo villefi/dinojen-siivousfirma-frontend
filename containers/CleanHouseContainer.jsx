@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from "react";
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import CleanHouse from '../components/HouseClean';
+import CleanHouse from '../components/CleanHouse';
 import * as HouseActions from '../actions/Houses';
 
 class CleanHouseContainer extends Component {

@@ -31,8 +31,8 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'http://localhost:3000/api/v1': JSON.stringify(http://localhost:3000/api/v1)
-    })
+      'process.env.API_URL': JSON.stringify(process.env.API_URL)
+      })
   ],
   devServer: {
     historyApiFallback: true
