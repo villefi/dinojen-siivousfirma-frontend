@@ -16,13 +16,10 @@ class HouseList extends Component {
     const { houses, navigateToHouse } = this.props;
     return (
       <div className="house-list" style={defaultStyle}>
-
-        Koira 
-
         <List className="house-list">
           {houses.map(house =>
-            <HouseItem key={house.id} house={house} onClick={navigateToHouse}/>
-           )}
+            <HouseItem key={house.id} house={house} onClick={navigateToHouse}/>,
+          )}
         </List>
       </div>
     );

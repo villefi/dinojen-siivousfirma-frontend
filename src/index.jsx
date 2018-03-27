@@ -37,7 +37,6 @@ ReactDOM.render(
     <ConnectedRouter history={history}>
       <MuiThemeProvider muiTheme={theme}>
         <div>
-          <h3> Kohteet </h3>
           <Route exact path="/" component={App}/>
           <Route path="/houses/:id" component={HouseContainer}/>
           <Route exact path="/games" component={GameApp}/>

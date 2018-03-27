@@ -18,7 +18,6 @@ class HouseListContainer extends Component {
     
     return (
       <div>
-        <h3>Osoite    -    Siivottu? </h3>
         <HouseList houses={ houses } navigateToHouse={ this.props.navigateToHouse }/>
       </div>
     );

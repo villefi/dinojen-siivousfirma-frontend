@@ -10,10 +10,10 @@ class App extends Component {
     return (
       <div>
           <div>
-            <h3> Nakki tööt</h3>
-            <FetchHousesContainer/>
+            <h3> - </h3>
             <HouseListContainer />
             <CleanHouseContainer/>
+            <FetchHousesContainer/>
           </div>
       </div>
     );

@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 
 class GameContainer extends Component {
   render() {
+    console.log(this.props);
     return (
-      console.log(this.props.match),
+//        Gamecontainer.jsx ollaan nyt ja id:
       <div>
-        kissa :
+
         {this.props.match.params.id}
 
       </div>

@@ -25,16 +25,16 @@ import axios from 'axios';
     return { type: types.FETCH_HOUSES_ERROR, payload : { error: error } };
   }
 
-  export function cleanHouse(id, state) {
+  // pitäskö laittaa tila tähän mukaan??
+  export function cleanHouse(id) {
     return function (dispatch, getState) {
       dispatch({ type: types.CLEAN_HOUSE });
       return axios({
         method: 'post',
-        url: `http://localhost:3000/api/v1/done`,
+        url: `http://localhost:3000/api/v1/done/`+id,
         headers: [],        
         data: { 
-          id: id,
-          state: state
+          id: id          
         }       
       })
       .then((response) => dispatch(cleanHouseSuccess(response.data)))
