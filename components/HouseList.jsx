@@ -3,7 +3,7 @@ import { List } from 'material-ui';
 import HouseItem from '../components/HouseItem';
 
 const defaultStyle = {
-  width: 300,
+  width: 500,
   marginLeft: 20
 };
 

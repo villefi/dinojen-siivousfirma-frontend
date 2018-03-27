@@ -14,13 +14,13 @@ class HouseItem extends Component {
         {!house.done &&
         <h3>
         <ListItem primaryText=
-       {house.id+' ' + house.name + ' on siivoamatta.'}/>
+       {house.id+' ' + house.name + ' on siivoamatta.'}  onTouchTap={() => onClick(house.id)} />
         </h3>
        }
  
        {house.done===1 &&
-        <ListItem primaryText=
-       {house.id+' ' + house.name + ' on siivottu.'}/>
+        <ListItem secondaryText=
+       {house.id+' ' + house.name + ' on siivottu.'} onTouchTap={() => onClick(house.id)} />
        }
 
       </div>
@@ -28,7 +28,7 @@ class HouseItem extends Component {
   );
   /*
 
- <ListItem primaryText=
+  <ListItem primaryText=
         {house.id+' : '+house.name+' '+(house.done ? 'siivottu' : 'siivoamatta')}
          onTouchTap={() => onClick(house.id)}/>
 

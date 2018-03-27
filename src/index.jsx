@@ -7,6 +7,7 @@ import createHistory from 'history/createBrowserHistory';
 
 import App from '../containers/App';
 import HouseContainer from '../containers/HouseContainer';
+import CleanHouseContainer from '../containers/CleanHouseContainer';
 
 import GameApp from '../containers/GameApp';
 import GameContainer from '../containers/GameContainer';
@@ -38,7 +39,7 @@ ReactDOM.render(
       <MuiThemeProvider muiTheme={theme}>
         <div>
           <Route exact path="/" component={App}/>
-          <Route path="/houses/:id" component={HouseContainer}/>
+          <Route path="/houses/:id" component={CleanHouseContainer}/>
           <Route exact path="/games" component={GameApp}/>
           <Route path="/game/:id" component={GameContainer}/>
         </div>

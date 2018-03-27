@@ -15,7 +15,7 @@ class CleanHouse extends Component {
   render() {
     return (
       <div>
-          <h1 style={defaultStyle} >Siivoa talo</h1>
+          <h1 style={defaultStyle}> Siivoa talo</h1>
           <TodoTextInput newTodo
                          onSave={this.handleSave.bind(this)}
                          placeholder="Talon numero + enter" />

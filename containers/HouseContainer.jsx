@@ -16,7 +16,12 @@ class HouseContainer extends Component {
 
 
         </div>
-//      {this.props.match.params.name}
+/*      {this.props.match.params.name}
+    
+        this.props.cleanHouse(text);
+
+*/
+
 );
   }
 }
