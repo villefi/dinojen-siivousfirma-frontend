@@ -1,4 +1,4 @@
-# Dino Siivous Oy
+# Copyright 2018 by Dino Siivous Oy
 Beginning for Cleaning company project.
 
 Technologies: React.js, Redux, axios
