@@ -5,13 +5,13 @@ import { Provider } from 'react-redux';
 
 import createHistory from 'history/createBrowserHistory';
 
-import App from '../containers/App';
-import HouseContainer from '../containers/HouseContainer';
-import CleanHouseContainer from '../containers/CleanHouseContainer';
+import App from './containers/App';
+import HouseContainer from './containers/HouseContainer';
+import CleanHouseContainer from './containers/CleanHouseContainer';
 
-import GameApp from '../containers/GameApp';
-import GameContainer from '../containers/GameContainer';
-import configureStore from '../store/configureStore';
+import GameApp from './containers/GameApp';
+import GameContainer from './containers/GameContainer';
+import configureStore from './store/configureStore';
 
 import { Route } from 'react-router';
 import { ConnectedRouter } from 'react-router-redux';
@@ -19,7 +19,7 @@ import { ConnectedRouter } from 'react-router-redux';
 // For Customization Options, edit  or use
 // './src/material_ui_raw_theme_file.jsx' as a template.
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import theme from '../src/material_ui_raw_theme_file'
+import theme from './material_ui_raw_theme_file'
 
 //Needed for React Developer Tools
 window.React = React;
