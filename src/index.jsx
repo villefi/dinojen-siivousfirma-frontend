@@ -39,7 +39,7 @@ ReactDOM.render(
       <MuiThemeProvider muiTheme={theme}>
         <div>
           <Route exact path="/" component={App}/>
-          <Route path="/houses/:id" component={CleanHouseContainer}/>
+          <Route path="/houses/:id" component={HouseContainer}/>
           <Route exact path="/games" component={GameApp}/>
           <Route path="/game/:id" component={GameContainer}/>
         </div>

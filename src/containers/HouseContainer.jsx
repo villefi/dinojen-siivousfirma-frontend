@@ -6,23 +6,13 @@ import { RaisedButton } from 'material-ui';
 
 class HouseContainer extends Component {
   render() {
-    const { houseActions } = this.props;  
-    console.log(houseActions);
+    const { actions } = this.props;  
+
     return (
         <div>
-           HouseContainer.Kissi id  :
-           {this.props.match.params.id}
-        <RaisedButton onClick ={ HouseActions.cleanHouse }>Siivoa</RaisedButton>
-
-
+          <RaisedButton onClick ={ () => actions.cleanHouse(this.props.match.params.id) }>Siivoa</RaisedButton>
         </div>
-/*      {this.props.match.params.name}
-    
-        this.props.cleanHouse(text);
-
-*/
-
-);
+    );
   }
 }
 
@@ -30,4 +20,19 @@ HouseContainer.propTypes = {
   // cleanHouse: PropTypes.func.isRequired
 };
 
-export default HouseContainer;
+function mapStateToProps(state) {
+  return {
+
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(HouseActions, dispatch)
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HouseContainer);

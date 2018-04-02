@@ -7,10 +7,8 @@ import axios from 'axios';
   
       return axios({
         method: 'get',
-   //     url: `${process.env.API_URL}/houses`,
-   //     url: `${API_URL}/houses`,
-        url: `http://localhost:3000/api/v1/houses` //,
-    // headers: []        
+        url: `${process.env.API_URL}/houses`
+    // headers: []
       })
       .then((response) => dispatch(fetchHousesSuccess(response.data)))
       .catch((error) => dispatch(fetchHousesError(error)));

@@ -35,7 +35,8 @@ module.exports = {
       })
   ],
   devServer: {
-    
-    historyApiFallback: true, contentBase: './', hot: true
+    historyApiFallback: true,
+    contentBase: './',
+    hot: true
   }
 };

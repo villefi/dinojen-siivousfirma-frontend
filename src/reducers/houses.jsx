@@ -15,19 +15,19 @@ export default function houses(state = initialState, action) {
       return { ...state, isLoading : true };
 
     case FETCH_HOUSES_SUCCESS:
-      return { houses : action.payload.houses, isLoading : false, error : null};
+      return { ...state, houses : action.payload.houses, isLoading : false, error : null};
 
     case FETCH_HOUSES_FAILURE:
-      return { isLoading : false, error : action.payload.error };
+      return { ...state, isLoading : false, error : action.payload.error };
 
     case CLEAN_HOUSE:
       return { ...state, isLoading : true };
 
     case CLEAN_HOUSE_SUCCESS:
-        return { houses : action.payload.houses, isLoading : false, error : null};
+        return { ...state, houses : action.payload.houses, isLoading : false, error : null};
   
     case CLEAN_HOUSE_FAILURE:
-        return { isLoading : false, error : action.payload.error };
+        return { ...state, isLoading : false, error : action.payload.error };
   
    /*  case SHOW_HOUSE:
         return { state.map(house =>

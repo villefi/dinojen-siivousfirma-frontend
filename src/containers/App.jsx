@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import HouseListContainer from '../containers/HouseListContainer';
 import FetchHousesContainer from '../containers/FetchHousesContainer';
 import CleanHouseContainer from '../containers/CleanHouseContainer';
+import HouseContainer from '../containers/HouseContainer';
 
 class App extends Component {
   render() {
