@@ -6,7 +6,6 @@ import { RaisedButton } from 'material-ui';
 
 class FetchHousesContainer extends Component {
     render() {
-      console.log(this.props);
       const { houseActions } = this.props;
       return (
         <div>

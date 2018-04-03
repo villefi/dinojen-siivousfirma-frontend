@@ -8,6 +8,7 @@ import axios from 'axios';
       return axios({
         method: 'get',
         url: `${process.env.API_URL}/houses`
+       // url: `http://localhost:3000/dinoCleaning/houses`
     // headers: []
       })
       .then((response) => dispatch(fetchHousesSuccess(response.data)))
@@ -29,7 +30,8 @@ import axios from 'axios';
       dispatch({ type: types.CLEAN_HOUSE });
       return axios({
         method: 'post',
-        url: `http://localhost:3000/api/v1/done/`+id,
+        url: `${process.env.API_URL}/houses/done/` +id + `/1`,
+       // url: `http://localhost:3000/api/v1/done/`+id,
         headers: [],        
         data: { 
           id: id          

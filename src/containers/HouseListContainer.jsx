@@ -5,7 +5,7 @@ import HouseList from '../components/HouseList';
 import * as HouseActions from '../actions/Houses';
 import { push } from 'react-router-redux';
 
-// const { houses } = {null};
+
 
 class HouseListContainer extends Component {
 
@@ -31,7 +31,7 @@ HouseListContainer.propTypes = {
 };
 
 // Haetaan storessa olevasta tilasta sopivat asiat näytettäväksi propseiksi
-// kopioi gamelistcontainerista
+
 function mapStateToProps(state) {
   return {
         houses: state.houses.houses
