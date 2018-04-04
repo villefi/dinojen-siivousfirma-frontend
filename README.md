@@ -23,7 +23,9 @@ To put compiled files into `static` directory, type the following command.
 $ npm run build
 ```
 
-Set env
+##Set env
+
+Rename .env.sample to .env and check API_URL etc, then run
 
 ```bash
 $ source .env
