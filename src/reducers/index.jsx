@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import todos from './Todos';
-import games from './Games';
-import houses from './Houses';
+import todos from './todos';
+import games from './tames';
+import houses from './houses';
 
 import {routerReducer} from 'react-router-redux';
 
