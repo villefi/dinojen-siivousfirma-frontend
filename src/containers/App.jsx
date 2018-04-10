@@ -11,8 +11,8 @@ class App extends Component {
     return (
       <div>
           <div>
-            <h3> - </h3>
-            <HouseListContainer />
+            <h3> Dino Siivous Oy  </h3>
+            <HouseListContainer/>
             <CleanHouseContainer/>
             <FetchHousesContainer/>
           </div>

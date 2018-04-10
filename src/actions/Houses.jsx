@@ -1,6 +1,8 @@
 import * as types from '../constants/ActionTypes';
 import axios from 'axios';
  
+// HAE KAIKKI TALOT
+
   export function fetchHouses() {
     return function (dispatch, getState) {
       dispatch({ type: types.FETCH_HOUSES });
@@ -8,8 +10,7 @@ import axios from 'axios';
       return axios({
         method: 'get',
         url: `${process.env.API_URL}/houses`
-       // url: `http://localhost:3000/dinoCleaning/houses`
-    // headers: []
+ 
       })
       .then((response) => dispatch(fetchHousesSuccess(response.data)))
       .catch((error) => dispatch(fetchHousesError(error)));
@@ -24,7 +25,8 @@ import axios from 'axios';
     return { type: types.FETCH_HOUSES_ERROR, payload : { error: error } };
   }
 
-  // pitäskö laittaa tila tähän mukaan??
+  // SIIVOA TALO
+
   export function cleanHouse(id) {
     return function (dispatch, getState) {
       dispatch({ type: types.CLEAN_HOUSE });
@@ -40,4 +42,39 @@ import axios from 'axios';
       .then((response) => dispatch(cleanHouseSuccess(response.data)))
       .catch((error) => dispatch(cleanHouseError(error)));
     };
+  }
+
+  export function cleanHouseSuccess(houses) {
+    return { type: types.CLEAN_HOUSE_SUCCESS, payload : { houses: houses } };
+  }
+  
+  export function cleanHouseError(error) {
+    return { type: types.CLEAN_HOUSE_ERROR, payload : { error: error } };
+  }
+
+// DETAILS
+
+  export function detailsHouse(id) {
+    return function (dispatch, getState) {
+      dispatch({ type: types.DETAILS_HOUSE });
+      return axios({
+        method: 'get',
+        url: `${process.env.API_URL}/houses/` +id
+    
+    //    headers: [],        
+    //    data: { 
+    //      id: id          
+    //    }       
+      })
+      .then((response) => dispatch(detailsHouseSuccess(response.data)))
+      .catch((error) => dispatch(detailsHouseError(error)));
+    };
+  }
+
+  export function detailsHouseSuccess(houses) {
+    return { type: types.DETAILS_HOUSE_SUCCESS, payload : { houses: houses } };
+  }
+  
+  export function detailsHouseError(error) {
+    return { type: types.DETAILS_HOUSE_ERROR, payload : { error: error } };
   }

@@ -5,6 +5,7 @@ import * as HouseActions from '../actions/Houses';
 import { RaisedButton } from 'material-ui';
 import classnames from 'classnames';
 import { ListItem } from 'material-ui';
+import HouseDetailsContainer from '../containers/HouseDetailsContainer';
 
 class HouseContainer extends Component {
   render() {
@@ -14,8 +15,11 @@ class HouseContainer extends Component {
 
     return (
         <div>
-         <h3> <ListItem primaryText= {'Talo numero ' + id + ' tiedot tähän.'} /></h3>
-          <RaisedButton onClick ={ () => actions.cleanHouse(id) }>Siivoa talo #{id}</RaisedButton>
+         
+         <h3> <ListItem primaryText= {'Talo numero ' + id} /></h3>
+         <HouseDetailsContainer id={id}/>
+         <RaisedButton onClick ={ () => actions.cleanHouse(id) }>Siivoa talo #{id}</RaisedButton>
+                 
         </div>
     );
   }
