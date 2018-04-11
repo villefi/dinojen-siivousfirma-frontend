@@ -24,8 +24,8 @@ export default function houses(state = initialState, action) {
       return { ...state, isLoading : true };
 
     case CLEAN_HOUSE_SUCCESS:
-        return { ...state, houses : action.payload.houses, isLoading : false, error : null};
-  
+        return { ...state, houses : action.payload, isLoading : false, error : null};
+  // return { ...state, houses : action.payload.houses, isLoading : false, error : null};
     case CLEAN_HOUSE_FAILURE:
         return { ...state, isLoading : false, error : action.payload.error };
   

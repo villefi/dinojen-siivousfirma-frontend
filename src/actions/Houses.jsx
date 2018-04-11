@@ -22,7 +22,7 @@ import axios from 'axios';
   }
   
   export function fetchHousesError(error) {
-    return { type: types.FETCH_HOUSES_ERROR, payload : { error: error } };
+    return { type: types.FETCH_HOUSES_FAILURE, payload : { error: error } };
   }
 
   // SIIVOA TALO
@@ -38,17 +38,22 @@ import axios from 'axios';
           id: id          
         }       
       })
-      .then((response) => dispatch(cleanHouseSuccess(response.data)))
-      .catch((error) => dispatch(cleanHouseError(error)));
+ //     .then((response) => dispatch(cleanHouseSuccess(response.data)))
+    .then((response) => dispatch(cleanHouseSuccess()))
+    .catch((error) => dispatch(cleanHouseError(error)));
     };
   }
 
-  export function cleanHouseSuccess(houses) {
-    return { type: types.CLEAN_HOUSE_SUCCESS, payload : { houses: houses } };
+//  export function cleanHouseSuccess(houses) {
+//    return { type: types.CLEAN_HOUSE_SUCCESS, payload : { houses: houses } };
+//  }
+
+  export function cleanHouseSuccess() {
+    return { type: types.CLEAN_HOUSE_SUCCESS };
   }
   
   export function cleanHouseError(error) {
-    return { type: types.CLEAN_HOUSE_ERROR, payload : { error: error } };
+    return { type: types.CLEAN_HOUSE_FAILURE, payload : { error: error } };
   }
 
 // DETAILS
@@ -75,5 +80,5 @@ import axios from 'axios';
   }
   
   export function detailsHouseError(error) {
-    return { type: types.DETAILS_HOUSE_ERROR, payload : { error: error } };
+    return { type: types.DETAILS_HOUSE_FAILURE, payload : { error: error } };
   }

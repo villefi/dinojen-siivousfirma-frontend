@@ -11,9 +11,9 @@ import { ListItem } from 'material-ui';
 
 class HouseDetailsContainer extends Component {
 
-    componentDidMount() {
-    this.props.houseActions.detailsHouse(this.props.id);
- }
+//    componentDidMount() {
+//    this.props.houseActions.detailsHouse(this.props.id);
+//  }
   
   render() {
     let id = this.props.id;
