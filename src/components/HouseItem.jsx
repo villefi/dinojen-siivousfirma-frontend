@@ -20,7 +20,7 @@ class HouseItem extends Component {
  
        {house.done===1 &&
         <ListItem secondaryText=
-       {house.id+' ' + house.name + ' on siivottu.'} onTouchTap={() => onClick(house.id)} />
+       {house.id+' ' + house.name + ' on siivottu ' + house.date + ' kello ' + house.time + '.' } onTouchTap={() => onClick(house.id)} />
        }
 
       </div>

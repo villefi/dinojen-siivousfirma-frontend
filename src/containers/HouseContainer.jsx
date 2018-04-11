@@ -8,7 +8,9 @@ import { ListItem } from 'material-ui';
 import HouseDetailsContainer from '../containers/HouseDetailsContainer';
 
 class HouseContainer extends Component {
+  
   render() {
+    
     const { actions } = this.props;  
     let id= this.props.match.params.id;
     console.log();

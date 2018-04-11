@@ -18,6 +18,7 @@ class HouseDetailsContainer extends Component {
   render() {
     let id = this.props.id;
     let talo = this.props.houses[id-1];
+
     console.log(id, talo);
     
     return (
@@ -27,7 +28,7 @@ class HouseDetailsContainer extends Component {
         <ListItem primaryText= { 'Nimi: ' + talo.description }  />
         <ListItem primaryText= { 'Isännöitsijä: ' + talo.pm} />
         <ListItem primaryText= { 'Siivoaja: ' + talo.worker} />
-        <ListItem primaryText= { 'Viimeksi siivottu: ' + talo.lastdone}/>
+        <ListItem primaryText= { 'Viimeksi siivottu: ' + talo.date + ' kello ' + talo.time}/>
         {!talo.done && <h3> <ListItem primaryText= { 'Talo on siivoamatta.'} /> </h3> }
         { talo.done===1 &&  <ListItem secondaryText= {'Talo on siivottu.'}/>  }
 
