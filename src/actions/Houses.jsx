@@ -33,7 +33,6 @@ import axios from 'axios';
       return axios({
         method: 'post',
         url: `${process.env.API_URL}/houses/done/` +id + `/1`,
-       // url: `http://localhost:3000/api/v1/done/`+id,
         headers: [],        
         data: { 
           id: id          
