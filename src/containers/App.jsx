@@ -5,6 +5,8 @@ import HouseListContainer from '../containers/HouseListContainer';
 import FetchHousesContainer from '../containers/FetchHousesContainer';
 import CleanHouseContainer from '../containers/CleanHouseContainer';
 import HouseContainer from '../containers/HouseContainer';
+import AddHouseContainer from "./AddHouseContainer";
+
 
 class App extends Component {
   render() {
@@ -13,8 +15,8 @@ class App extends Component {
           <div>
             <h3> Dino Siivous Oy  </h3>
             <HouseListContainer/>
-            <CleanHouseContainer/>
-            <FetchHousesContainer/>
+            
+            <AddHouseContainer/>
           </div>
       </div>
     );
@@ -22,3 +24,6 @@ class App extends Component {
 }
 
 export default App;
+
+// <CleanHouseContainer/>
+//             <FetchHousesContainer/>

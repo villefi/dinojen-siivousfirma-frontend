@@ -11,13 +11,16 @@ import { ListItem } from 'material-ui';
 
 class HouseDetailsContainer extends Component {
 
-//    componentDidMount() {
-//    this.props.houseActions.detailsHouse(this.props.id);
-//  }
+    componentDidMount() {
+    this.props.houseActions.detailsHouse(this.props.id);
+  }
   
   render() {
     let id = this.props.id;
-    let talo = this.props.houses[id-1];
+    // let talo2 = this.props.houses[id-1];
+    let talo = this.props.houses;
+    // if (this.props.houses[1].id>0) talo = this.props.houses[id-1];
+    // else talo = this.props.houses;
 
     console.log(id, talo);
     
@@ -40,7 +43,7 @@ class HouseDetailsContainer extends Component {
 
 // reactin apufunktio, jolla voidaan tehdä propseista pakollisia
 HouseDetailsContainer.propTypes = {
-  houses: PropTypes.array.isRequired
+ // houses: PropTypes.array.isRequired
   
 };
 

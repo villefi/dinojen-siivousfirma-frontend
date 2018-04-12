@@ -7,6 +7,9 @@ const defaultStyle = {
   marginLeft: 20
 };
 
+
+// Tässä tehdään lista taloista
+
 class HouseList extends Component {
   constructor(props, context) {
     super(props, context);

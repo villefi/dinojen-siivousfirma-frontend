@@ -1,6 +1,37 @@
 import * as types from '../constants/ActionTypes';
 import axios from 'axios';
- 
+
+
+// LISÄÄ TALO
+
+export function addHouse(name) {
+  return function (dispatch, getState) {
+    dispatch({ type: types.ADD_HOUSE });
+
+    return axios({
+      method: 'post',
+      url: `${process.env.API_URL}/houses/add`,
+      headers: [],
+      data: {
+        name: name
+      }
+    })
+    .then((response) => dispatch(addHouseSuccess(response.data)))
+    .catch((error) => dispatch(addHouseFailure(error)));
+  };
+}
+
+export function addHouseSuccess(house){
+  return { type: types.ADD_HOUSE_SUCCESS, payload : { house: house } };
+}
+
+export function addHouseFailure(error){
+  return { type: types.ADD_HOUSE_FAILURE, payload : { error: error } };
+}
+
+
+
+
 // HAE KAIKKI TALOT
 
   export function fetchHouses() {
@@ -63,12 +94,12 @@ import axios from 'axios';
       dispatch({ type: types.DETAILS_HOUSE });
       return axios({
         method: 'get',
-        url: `${process.env.API_URL}/houses/` +id
+        url: `${process.env.API_URL}/houses/` +id,
     
-    //    headers: [],        
-    //    data: { 
-    //      id: id          
-    //    }       
+       headers: [],        
+       data: { 
+         id: id          
+       }       
       })
       .then((response) => dispatch(detailsHouseSuccess(response.data)))
       .catch((error) => dispatch(detailsHouseError(error)));

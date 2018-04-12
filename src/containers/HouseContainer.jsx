@@ -13,7 +13,7 @@ class HouseContainer extends Component {
     
     const { actions } = this.props;  
     let id= this.props.match.params.id;
-    console.log();
+    console.log('Housecontainter id= '+id);
 
     return (
         <div>
