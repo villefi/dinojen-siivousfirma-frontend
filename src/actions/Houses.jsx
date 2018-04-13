@@ -4,7 +4,7 @@ import axios from 'axios';
 
 // LISÄÄ TALO
 
-export function addHouse(name) {
+export function addHouse(name, description, pm, worker ) {
   return function (dispatch, getState) {
     dispatch({ type: types.ADD_HOUSE });
 
@@ -13,7 +13,10 @@ export function addHouse(name) {
       url: `${process.env.API_URL}/houses/add`,
       headers: [],
       data: {
-        name: name
+        name: name,
+        description: description,
+        pm : pm,
+        worker : worker
       }
     })
     .then((response) => dispatch(addHouseSuccess(response.data)))
