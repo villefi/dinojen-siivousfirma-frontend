@@ -11,18 +11,23 @@ class HouseItem extends Component {
     const { house, onClick } = this.props;
    
     let currentdate = new Date(); 
-    let date = currentdate.getDate() + "." + (currentdate.getMonth()+1)  + "." + currentdate.getFullYear();
-    let pva = currentdate.getDay()-1;
+    let today = currentdate.getDate();
+    let pva = currentdate.getDay();
     let when = 0;
-    let days = ['maanantaina','tiistaina','keskiviikkona','torstaina','perjantaina','lauantaina','sununtaina'];
-    
-   //  console.log('tänään on :'+ days[pva] + ' , ' + pva + ' ja kello on :' + time);
-   // console.log('Siivouspäivä=' + house.date);
-   // console.log(house.date === date );
+    let days = ['sunnuntaina','maanantaina','tiistaina','keskiviikkona','torstaina','perjantaina','lauantaina'];
+    let clday = parseInt(house.date.substring(0, 2));
+    // let clday = parseInt(cldaytxt);
+    console.log('tänään on :' + today +' ja ' + days[pva] + ' , ' + pva);
+    console.log('Siivouspäivä=' + clday);
    
-    if (house.date === date) when = 'tänään ' + days[pva] ;
-    else if (house.date === date-1) when = 'eilen ' + days[pva];
-    else when = days[pva] + ' , ' + house.date;
+   
+    if (clday === today) when = 'tänään ' + days[pva] ;
+    else if (clday === today-1) when = 'eilen ' + days[pva-1];
+    
+    // tämä on hieno jos tällä viikkoa niin laita viikonpäivä??
+    else if ((today - clday) <= pva) when = days[pva - (today-clday)];
+    
+    else when = house.date;
 
 
     return (
