@@ -22,6 +22,12 @@ class HouseDetailsContainer extends Component {
     // if (this.props.houses[1].id>0) talo = this.props.houses[id-1];
     // else talo = this.props.houses;
 
+    let currentdate = new Date(); 
+    let date = currentdate.getDate() + "." + (currentdate.getMonth()+1)  + "." + currentdate.getFullYear();
+    let time = currentdate.getHours() + ":" + (currentdate.getMinutes()<10?'0':'') + currentdate.getMinutes();
+    console.log('tänään on :' + date + ' ja kello on :' + time);
+
+
     console.log(id, talo);
     
     return (
