@@ -16,10 +16,7 @@ export default function houses(state = initialState, action) {
       return { ...state, isLoading : true };
 
     case ADD_HOUSE_SUCCESS:
-      return { houses : [
-        ...state.houses,
-        action.payload.house
-      ],
+      return { houses : [ ...state.houses, action.payload.house ],
       isLoading : false,
       error : null
       };
@@ -40,7 +37,20 @@ export default function houses(state = initialState, action) {
       return { ...state, isLoading : true };
 
     case CLEAN_HOUSE_SUCCESS:
-        return { ...state, houses : action.payload, isLoading : false, error : null};
+      return { ...state, houses : action.payload.houses, isLoading : false, error : null};
+      
+      // ...state,  houses: state.houses.map(
+      //    (houses) => houses.id === action.payload.houses.id ?  action.payload.houses : houses ), 
+      //    isLoading : false,  error : null
+      // }
+
+
+//      return { houses : [ ...state.houses, action.payload.houses ],
+//    isLoading : false,
+//    error : null
+//    };
+
+
   // return { ...state, houses : action.payload.houses, isLoading : false, error : null};
     case CLEAN_HOUSE_FAILURE:
         return { ...state, isLoading : false, error : action.payload.error };

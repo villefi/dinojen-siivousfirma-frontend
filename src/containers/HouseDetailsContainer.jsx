@@ -18,7 +18,7 @@ class HouseDetailsContainer extends Component {
   render() {
     let id = this.props.id;
     // let talo2 = this.props.houses[id-1];
-    let talo = this.props.houses;
+    let talo = this.props.houses[id-1];
     // if (this.props.houses[1].id>0) talo = this.props.houses[id-1];
     // else talo = this.props.houses;
 

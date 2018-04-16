@@ -72,18 +72,15 @@ export function addHouseFailure(error){
           id: id          
         }       
       })
- //     .then((response) => dispatch(cleanHouseSuccess(response.data)))
-    .then((response) => dispatch(cleanHouseSuccess()))
+
+    .then((response) => dispatch(cleanHouseSuccess(response.data)))
     .catch((error) => dispatch(cleanHouseError(error)));
     };
   }
 
-//  export function cleanHouseSuccess(houses) {
-//    return { type: types.CLEAN_HOUSE_SUCCESS, payload : { houses: houses } };
-//  }
 
-  export function cleanHouseSuccess() {
-    return { type: types.CLEAN_HOUSE_SUCCESS };
+  export function cleanHouseSuccess(houses) {
+    return { type: types.CLEAN_HOUSE_SUCCESS, payload : { houses : houses } };
   }
   
   export function cleanHouseError(error) {
