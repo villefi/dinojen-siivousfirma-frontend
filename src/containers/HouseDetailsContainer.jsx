@@ -17,11 +17,8 @@ class HouseDetailsContainer extends Component {
   
   render() {
     let id = this.props.id;
-    // let talo2 = this.props.houses[id-1];
     let talo = this.props.houses[id-1];
-    // if (this.props.houses[1].id>0) talo = this.props.houses[id-1];
-    // else talo = this.props.houses;
-
+  
     let currentdate = new Date(); 
     let date = currentdate.getDate() + "." + (currentdate.getMonth()+1)  + "." + currentdate.getFullYear();
     let time = currentdate.getHours() + ":" + (currentdate.getMinutes()<10?'0':'') + currentdate.getMinutes();
@@ -40,12 +37,12 @@ class HouseDetailsContainer extends Component {
         <ListItem primaryText= { 'Viimeksi siivottu: ' + talo.date + ' kello ' + talo.time}/>
         {!talo.done && <h3> <ListItem primaryText= { 'Talo on siivoamatta.'} /> </h3> }
         { talo.done===1 &&  <ListItem secondaryText= {'Talo on siivottu.'}/>  }
-
+        
       </div>   
     );
   }
 }
-//    <HouseDetails id ={ id } />
+
 
 // reactin apufunktio, jolla voidaan tehdä propseista pakollisia
 HouseDetailsContainer.propTypes = {

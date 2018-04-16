@@ -1,4 +1,9 @@
-import { SHOW_HOUSE, SHOW_HOUSE_SUCCESS, SHOW_HOUSE_FAILURE, FETCH_HOUSES, FETCH_HOUSES_SUCCESS, FETCH_HOUSES_FAILURE, CLEAN_HOUSE, CLEAN_HOUSE_SUCCESS, CLEAN_HOUSE_FAILURE, DETAILS_HOUSE, DETAILS_HOUSE_SUCCESS, DETAILS_HOUSE_FAILURE, ADD_GAME, ADD_GAME_FAILURE, ADD_GAME_SUCCESS, ADD_HOUSE, ADD_HOUSE_SUCCESS, ADD_HOUSE_FAILURE } from '../constants/ActionTypes';
+import { SHOW_HOUSE, SHOW_HOUSE_SUCCESS, SHOW_HOUSE_FAILURE, FETCH_HOUSES, FETCH_HOUSES_SUCCESS,
+  FETCH_HOUSES_FAILURE, CLEAN_HOUSE, CLEAN_HOUSE_SUCCESS, CLEAN_HOUSE_FAILURE,
+  DETAILS_HOUSE, DETAILS_HOUSE_SUCCESS, DETAILS_HOUSE_FAILURE,
+  DIRT_HOUSE, DIRT_HOUSE_SUCCESS, DIRT_HOUSE_FAILURE,
+  EDIT_HOUSE, EDIT_HOUSE_SUCCESS, EDIT_HOUSE_FAILURE,
+  ADD_GAME, ADD_GAME_FAILURE, ADD_GAME_SUCCESS, ADD_HOUSE, ADD_HOUSE_SUCCESS, ADD_HOUSE_FAILURE } from '../constants/ActionTypes';
 
 
 import {  } from '../constants/ActionTypes';
@@ -38,22 +43,18 @@ export default function houses(state = initialState, action) {
 
     case CLEAN_HOUSE_SUCCESS:
       return { ...state, houses : action.payload.houses, isLoading : false, error : null};
-      
-      // ...state,  houses: state.houses.map(
-      //    (houses) => houses.id === action.payload.houses.id ?  action.payload.houses : houses ), 
-      //    isLoading : false,  error : null
-      // }
-
-
-//      return { houses : [ ...state.houses, action.payload.houses ],
-//    isLoading : false,
-//    error : null
-//    };
-
-
-  // return { ...state, houses : action.payload.houses, isLoading : false, error : null};
+ 
     case CLEAN_HOUSE_FAILURE:
         return { ...state, isLoading : false, error : action.payload.error };
+
+      case DIRT_HOUSE:
+      return { ...state, isLoading : true };
+
+    case DIRT_HOUSE_SUCCESS:
+      return { ...state, houses : action.payload.houses, isLoading : false, error : null};
+
+    case DIRT_HOUSE_FAILURE:
+        return { ...state, isLoading : false, error : action.payload.error };      
   
     case DETAILS_HOUSE:
         return { ...state, isLoading : true};
@@ -70,7 +71,20 @@ export default function houses(state = initialState, action) {
     case DETAILS_HOUSE_FAILURE:
           return { isLoading : false, error : action.payload.error };  
 
-   
+    case EDIT_HOUSE:
+          // ...state tarkoittaa vanhaa tilaa
+            return { ...state, isLoading : true };
+      
+    case EDIT_HOUSE_SUCCESS:
+            return { houses : [ ...state.houses, action.payload.house ],
+            isLoading : false,
+            error : null
+            };
+      
+    case EDIT_HOUSE_FAILURE:
+            return { isLoading : false, error : action.payload.error };
+
+
 
     default:
       return state;

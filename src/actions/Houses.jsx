@@ -87,6 +87,35 @@ export function addHouseFailure(error){
     return { type: types.CLEAN_HOUSE_FAILURE, payload : { error: error } };
   }
 
+ // SOTKE TALO
+
+ export function dirtHouse(id) {
+  return function (dispatch, getState) {
+    dispatch({ type: types.DIRT_HOUSE });
+    return axios({
+      method: 'post',
+      url: `${process.env.API_URL}/houses/done/` + id + `/0`,
+      headers: [],        
+      data: { 
+        id: id          
+      }       
+    })
+
+  .then((response) => dispatch(dirtHouseSuccess(response.data)))
+  .catch((error) => dispatch(dirtHouseError(error)));
+  };
+}
+
+
+export function dirtHouseSuccess(houses) {
+  return { type: types.DIRT_HOUSE_SUCCESS, payload : { houses : houses } };
+}
+
+export function dirtHouseError(error) {
+  return { type: types.DIRT_HOUSE_FAILURE, payload : { error: error } };
+}
+
+
 // DETAILS
 
   export function detailsHouse(id) {
@@ -113,3 +142,34 @@ export function addHouseFailure(error){
   export function detailsHouseError(error) {
     return { type: types.DETAILS_HOUSE_FAILURE, payload : { error: error } };
   }
+
+  // EDIT TALO
+
+export function editHouse(id, name, description, pm, worker ) {
+  return function (dispatch, getState) {
+    dispatch({ type: types.EDIT_HOUSE });
+
+    return axios({
+      method: 'post',
+      url: `${process.env.API_URL}/edit/` +id,
+      headers: [],
+      data: {
+        id : id,
+        name: name,
+        description: description,
+        pm : pm,
+        worker : worker
+      }
+    })
+    .then((response) => dispatch(editHouseSuccess(response.data[response.data.length-1]))) 
+    .catch((error) => dispatch(editHouseFailure(error)));
+  };
+}
+
+export function editHouseSuccess(house){
+  return { type: types.EDIT_HOUSE_SUCCESS, payload : { house: house } };
+}
+
+export function editHouseFailure(error){
+  return { type: types.EDIT_HOUSE_FAILURE, payload : { error: error } };
+}

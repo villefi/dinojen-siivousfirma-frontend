@@ -8,22 +8,32 @@ const defaultStyle = {
   marginLeft: 20
 };
 
-class AddHouse extends Component {
+class EditHouse extends Component {
 
     onClickHandler () {
+    //  console.log('edit house ja id = ', id);
       console.log(this.refs['simpleForm'].getFormValues());
-      this.props.addHouse(this.refs['simpleForm'].getFormValues());
+      this.props.editHouse(this.refs['simpleForm'].getFormValues());
       
     }
+
+    //   'id=' { id }
+
     render () {
       return (
       <div>
-        <h2> - Lisää uusi talo -</h2>
+      
         <Form ref='simpleForm'>
+        <Field
+              name='id'
+              label='Anna talon numero'
+              type='text'
+            />
             <Field
               name='name'
               label='Anna talon osoite'
               type='text'
+              placeholder='Kissa'
             />
             <Field
               name='description'
@@ -41,7 +51,7 @@ class AddHouse extends Component {
               type='text'
             />
         </Form>
-        <button onClick={this.onClickHandler.bind(this)}> Lisää talo </button>
+        <button onClick={this.onClickHandler.bind(this)}> Muokkaa talo </button>
       </div>
   
       );
@@ -50,8 +60,8 @@ class AddHouse extends Component {
 
 
 
-AddHouse.propTypes = {
-addHouse: PropTypes.func.isRequired
+EditHouse.propTypes = {
+editHouse: PropTypes.func.isRequired
 };
 
-export default AddHouse;
+export default EditHouse;
