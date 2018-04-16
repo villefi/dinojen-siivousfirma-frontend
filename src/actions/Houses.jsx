@@ -19,7 +19,7 @@ export function addHouse(name, description, pm, worker ) {
         worker : worker
       }
     })
-    .then((response) => dispatch(addHouseSuccess(response.data)))
+    .then((response) => dispatch(addHouseSuccess(response.data[response.data.length-1]))) 
     .catch((error) => dispatch(addHouseFailure(error)));
   };
 }

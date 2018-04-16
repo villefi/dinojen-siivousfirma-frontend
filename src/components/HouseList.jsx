@@ -17,6 +17,7 @@ class HouseList extends Component {
 
   render() {
     const { houses, navigateToHouse } = this.props;
+    console.log('Houselistin propsit: ', this.props);
     return (
       <div className="house-list" style={defaultStyle}>
         <List className="house-list">

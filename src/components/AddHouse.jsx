@@ -2,6 +2,8 @@ import React, { PropTypes, Component } from 'react';
 import {Form, Field} from 'simple-react-forms';
 
 
+
+
 const defaultStyle = {
   marginLeft: 20
 };
@@ -11,6 +13,7 @@ class AddHouse extends Component {
     onClickHandler () {
       console.log(this.refs['simpleForm'].getFormValues());
       this.props.addHouse(this.refs['simpleForm'].getFormValues());
+      
     }
     render () {
       return (
