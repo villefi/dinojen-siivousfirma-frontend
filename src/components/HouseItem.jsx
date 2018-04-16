@@ -13,28 +13,43 @@ class HouseItem extends Component {
     let currentdate = new Date(); 
     let today = currentdate.getDate();
     let pva = currentdate.getDay();
+    let kuu = 1 + currentdate.getMonth();
     let when = 0;
+    let ero = 0;
     let days = ['sunnuntaina','maanantaina','tiistaina','keskiviikkona','torstaina','perjantaina','lauantaina'];
-    let clday = parseInt(house.date.substring(0, 2));
-  
-    console.log('tänään on :', today, ' ja ',days[pva], ' , ', pva);
-    console.log('Siivouspäivä=', clday);
-  
-    // kk-vaihdos ei toimi, pitäs laskea ms tai jotain
+    let dim = [31,28,31,30,31,30,31,31,30,31,30,31];
+    let paikka = house.date.indexOf(".");  // Gets the first index where a . occours
+    let clday = parseInt(house.date.substr(0, paikka)); // Gets the first part
+    let loppu = house.date.substr(paikka + 1);
+    let clm = parseInt(loppu.substring(0, 2));
 
-    if (clday === today) when = 'tänään ' + days[pva] + ' kello ' + house.time + '.';
-    else if (clday === today-1) when = 'eilen ' + days[pva-1]  + ' kello ' + house.time + '.';
+    console.log('clday: ', clday, ' clm: ', clm);
+    console.log('today: ', today, ' kuu: ', kuu);
+    console.log('tänään on :', today, ' ja ',days[pva], ' , ', pva);
+  
+    if (kuu === clm) ero = today-clday;  // mikään paikka ei ole siivoamatta yli kuukautta
+    else ero = today + (dim[kuu-2]-clday);
+    console.log('ERO: ', ero, 'dim: ', dim[kuu-1], 'kuu-1: ', kuu-1, 'dimkoko: ', dim);
+    
+
+    if ( ero === 0 ) when = 'tänään ' + days[pva] + ' kello ' + house.time + '.';
+    else if (ero === 1) when = 'eilen ' + days[pva-1]  + ' kello ' + house.time + '.';
     else if ((today - clday) >0 && (today - clday) < pva) when = days[pva - (today-clday)] + ', ' + house.date;
     else if ((today - clday) < 7 && (today - clday) > pva) when = days[pva + 7-(today-clday)] + ', ' + house.date;
-    else when = house.date;
+    else when = ero + ' päivää sitten ' + house.date;
 
 
     return (
       <div>
        
-       { house.done===1 &&
+       { house.done===1 && ero < 7 &&
         <ListItem secondaryText=
        {house.id+' ' + house.name + ' on siivottu ' + when } onTouchTap={() => onClick(house.id)} />
+       }
+       { house.done===1 && ero >= 7 &&
+        <h3> <ListItem secondaryText=
+       {house.id+' ' + house.name + ' on siivottu ' + when } onTouchTap={() => onClick(house.id)} />
+       </h3>
        }
         { !house.done &&
         <h3>

@@ -9,6 +9,7 @@ import { ListItem } from 'material-ui';
 
 
 
+
 class HouseDetailsContainer extends Component {
 
     componentDidMount() {
