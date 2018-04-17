@@ -1,67 +1,86 @@
 import React, { PropTypes, Component } from 'react';
 import {Form, Field} from 'simple-react-forms';
+import FetchHousesContainer from '../containers/FetchHousesContainer';
+import { MapsTransferWithinAStation } from 'material-ui';
+import * as HouseActions from '../actions/Houses';
 
 
 
 
 const defaultStyle = {
-  marginLeft: 20
+  marginLeft: 40
 };
 
+
+
 class EditHouse extends Component {
-
-    onClickHandler () {
-    //  console.log('edit house ja id = ', id);
-      console.log(this.refs['simpleForm'].getFormValues());
-      this.props.editHouse(this.refs['simpleForm'].getFormValues());
-      
+  constructor(props, context) {
+      super(props, context);
     }
+  
+ onClickHandler () {
+    this.props.editHouse(this.refs['simpleForm'].getFormValues())
+    this.props.fetchHouses() // tämä ei toimi!!
+  }
 
-    //   'id=' { id }
-
+ 
     render () {
+
+    console.log(this.props.house);
+
       return (
       <div>
       
         <Form ref='simpleForm'>
         <Field
               name='id'
-              label='Anna talon numero'
+              label='Talon numero (ei voi muuttaa)'
               type='text'
+              defaultValue= {this.props.house.id}
+              disabled = 'true'
             />
             <Field
               name='name'
               label='Anna talon osoite'
               type='text'
-              placeholder='Kissa'
+              defaultValue= {this.props.house.name}
             />
             <Field
               name='description'
               label='AsOy Nimi'
               type='text'
+              defaultValue= {this.props.house.description}
             />
             <Field
               name='pm'
               label='Isännöitsijä'
               type='text'
+              defaultValue= {this.props.house.pm}
             />
             <Field
               name='worker'
               label='Siivoaja'
               type='text'
+              defaultValue= {this.props.house.worker}
             />
         </Form>
-        <button onClick={this.onClickHandler.bind(this)}> Muokkaa talo </button>
+        <button onClick={this.onClickHandler.bind(this) }> Muokkaa talo </button>
+        <FetchHousesContainer/>
       </div>
   
       );
     }
   }
 
-
+function mapStateToProps(state) {
+    return {
+      houses: state.houses.houses
+    };
+  }
 
 EditHouse.propTypes = {
-editHouse: PropTypes.func.isRequired
+editHouse: PropTypes.func.isRequired,
+fetchHouses: PropTypes.object.isRequired
 };
 
 export default EditHouse;

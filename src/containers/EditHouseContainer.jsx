@@ -7,12 +7,16 @@ import * as HouseActions from '../actions/Houses';
 class EditHouseContainer extends Component {
   render() {
     const { houseActions } = this.props;
+   
+    let id = this.props.house.id;
+    let talo = this.props.house;
+    console.log('EHC talo: ' + talo);
     return (
       <div>
-        <EditHouse editHouse ={ houseActions.editHouse }/>
+        <EditHouse editHouse ={ houseActions.editHouse } fetchHouses ={houseActions.fetchHouses} house ={talo}/>
       </div>
     );
-  }
+  }  // <EditHouse editHouse ={ talo }/>
 }
 
 EditHouseContainer.propTypes = {
@@ -21,7 +25,7 @@ EditHouseContainer.propTypes = {
 
 function mapStateToProps(state) {
   return {
-
+    houses: state.houses.houses
   };
 }
 

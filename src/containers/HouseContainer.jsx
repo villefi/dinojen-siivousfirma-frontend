@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from "react";
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as HouseActions from '../actions/Houses';
-import { RaisedButton } from 'material-ui';
+import { RaisedButton, HardwareMouse } from 'material-ui';
 import classnames from 'classnames';
 import { ListItem } from 'material-ui';
 import HouseDetailsContainer from '../containers/HouseDetailsContainer';
@@ -17,7 +17,8 @@ class HouseContainer extends Component {
     
     const { actions } = this.props;  
     let id= this.props.match.params.id;
-    console.log('Housecontainter id= '+id);
+    let house= this.props.houses[id-1];
+    console.log('Housecontainter id= ', id, + ' house= ', house);
 
     const style = {    margin: 12 };
     return (
@@ -27,8 +28,9 @@ class HouseContainer extends Component {
          <HouseDetailsContainer id={id}/>
          <RaisedButton primary={true} style={style} onClick ={ () => actions.cleanHouse(id) }>Siivoa talo # {id}</RaisedButton>
          <RaisedButton secondary={true} style={style} onClick ={ () => actions.dirtHouse(id) }>Sotke talo #{id}</RaisedButton>
+         <RaisedButton primary={true} style={style} onClick ={ () => actions.dirtHouse(id) }>Poista talo #{id}</RaisedButton>
          <h3> <ListItem primaryText= {'Muokkaa taloa'} /> </h3>
-         <EditHouseContainer/>        
+         <EditHouseContainer house={house}/>        
          </div>
     );
   }
@@ -40,7 +42,7 @@ HouseContainer.propTypes = {
 
 function mapStateToProps(state) {
   return {   
-
+    houses: state.houses.houses
   };
 }
 
