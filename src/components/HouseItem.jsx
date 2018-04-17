@@ -28,15 +28,17 @@ class HouseItem extends Component {
     console.log('tänään on :', today, ' ja ',days[pva], ' , ', pva);
   
     if (kuu === clm) ero = today-clday;  // mikään paikka ei ole siivoamatta yli kuukautta
-    else ero = today + (dim[kuu-2]-clday);
+    else if (kuu === clm+1) ero = today + (dim[kuu-2]-clday);
+    else ero=999;
     console.log('ERO: ', ero, 'dim: ', dim[kuu-1], 'kuu-1: ', kuu-1, 'dimkoko: ', dim);
     
 
     if ( ero === 0 ) when = 'tänään ' + days[pva] + ' kello ' + house.time + '.';
     else if (ero === 1) when = 'eilen ' + days[pva-1]  + ' kello ' + house.time + '.';
-    else if ((today - clday) >0 && (today - clday) < pva) when = days[pva - (today-clday)] + ', ' + house.date;
-    else if ((today - clday) < 7 && (today - clday) > pva) when = days[pva + 7-(today-clday)] + ', ' + house.date;
-    else when = ero + ' päivää sitten ' + house.date;
+    else if ((today - clday) >0 && (today - clday) < pva) when = days[pva - (today-clday)] + ', ' + house.date.slice(0, -4);
+    else if ((today - clday) < 7 && (today - clday) > pva) when = days[pva + 7-(today-clday)] + ', ' + house.date.slice(0, -4);
+    else if (ero === 999) when = 'ajat sitten ' + house.date.slice(0, -4);
+    else when = ero + ' päivää sitten ' + house.date.slice(0, -4);
 
 
     return (
@@ -44,11 +46,11 @@ class HouseItem extends Component {
        
        { house.done===1 && ero < 7 &&
         <ListItem secondaryText=
-       {house.id+' ' + house.name + ' on siivottu ' + when } onTouchTap={() => onClick(house.id)} />
+       {house.id+ ' ' + house.worker+' siivonnut ' + house.name + ' talon ' + when } onTouchTap={() => onClick(house.id)} />
        }
        { house.done===1 && ero >= 7 &&
         <h3> <ListItem secondaryText=
-       {house.id+' ' + house.name + ' on siivottu ' + when } onTouchTap={() => onClick(house.id)} />
+       {house.id+ ' ' + house.worker+' siivonnut ' + house.name + ' talon ' + when } onTouchTap={() => onClick(house.id)} />
        </h3>
        }
         { !house.done &&
