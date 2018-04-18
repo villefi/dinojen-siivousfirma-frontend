@@ -27,17 +27,17 @@ class EditHouse extends Component {
     render () {
 
     console.log(this.props.house);
-
+   
       return (
-      <div>
-      
+       <div>
+        <h3> Muokkaa talon tietoja</h3>
         <Form ref='simpleForm'>
         <Field
               name='id'
               label='Talon numero (ei voi muuttaa)'
               type='text'
               defaultValue= {this.props.house.id}
-              disabled = 'true'
+              disabled = {true}
             />
             <Field
               name='name'
@@ -79,8 +79,8 @@ function mapStateToProps(state) {
   }
 
 EditHouse.propTypes = {
-editHouse: PropTypes.func.isRequired,
-fetchHouses: PropTypes.object.isRequired
+editHouse: PropTypes.func.isRequired //,
+// fetchHouses: PropTypes.object.isRequired
 };
 
 export default EditHouse;
