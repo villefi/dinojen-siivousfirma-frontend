@@ -6,8 +6,8 @@ import HouseDetails from '../components/HouseDetails';
 import * as HouseActions from '../actions/Houses';
 import { push } from 'react-router-redux';
 import { ListItem } from 'material-ui';
-
-
+import GoogleMaps from '../containers/GoogleMapContainer';
+// import Geocoder from 'react-native-geocoding';
 
 
 class HouseDetailsContainer extends Component {
@@ -20,17 +20,18 @@ class HouseDetailsContainer extends Component {
     let id = this.props.id;
     let talo = this.props.houses[id-1];
   
+  //  Geocoder.from("Tampere");
+
     let currentdate = new Date(); 
     let date = currentdate.getDate() + "." + (currentdate.getMonth()+1)  + "." + currentdate.getFullYear();
     let time = currentdate.getHours() + ":" + (currentdate.getMinutes()<10?'0':'') + currentdate.getMinutes();
     console.log('tänään on :' + date + ' ja kello on :' + time);
-
-
+    
     console.log(id, talo);
     
     return (
       <div>
-        
+       
         <ListItem primaryText= { 'ID:' + id +' - Osoite: ' + talo.name}/>
         <ListItem primaryText= { 'Nimi: ' + talo.description }  />
         <ListItem primaryText= { 'Isännöitsijä: ' + talo.pm} />

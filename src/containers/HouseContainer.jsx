@@ -10,7 +10,7 @@ import EditHouse from '../components/EditHouse';
 import EditHouseContainer from '../containers/EditHouseContainer';
 import { SHOW_HOUSE_SUCCESS } from "../constants/ActionTypes";
 import { red100, red900, fullWhite, lightWhite, pinkA100, yellow300 } from "material-ui/styles/colors";
-
+import GoogleMaps from '../containers/GoogleMapContainer';
 
 class HouseContainer extends Component {
   
@@ -22,13 +22,18 @@ class HouseContainer extends Component {
     const { actions } = this.props;  
     let id= this.props.match.params.id;
     let house= this.props.houses[id-1];
+    let lon = 23.8521;
+    let lat = 61.4481;
     console.log('Housecontainter id= ', id, + ' house= ', house);
 
     const style = { margin: 12 };
     return (
         <div>
          
+         <GoogleMaps lon={lon} lat={lat}/>
+
          <h3> <ListItem primaryText= {'Talo numero ' + id} /></h3>
+         
          <HouseDetailsContainer id={id}/>
          <RaisedButton primary={true} style={style} onClick ={ () => actions.cleanHouse(id) }> Siivoa talo </RaisedButton>
          <RaisedButton secondary={true} style={style} onClick ={ () => actions.dirtHouse(id) }> Sotke talo </RaisedButton>
@@ -37,7 +42,7 @@ class HouseContainer extends Component {
                     ? <div><EditHouseContainer house={house}/></div>
                     : null
                 }
-         </div>
+        </div>
     );
   }
 }
@@ -62,3 +67,4 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(HouseContainer);
+

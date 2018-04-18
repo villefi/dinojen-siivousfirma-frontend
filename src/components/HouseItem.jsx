@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import { ListItem } from 'material-ui';
+import { red400 } from 'material-ui/styles/colors';
 
 class HouseItem extends Component {
   constructor(props, context) {
