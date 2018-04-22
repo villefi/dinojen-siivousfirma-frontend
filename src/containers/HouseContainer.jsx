@@ -8,9 +8,10 @@ import { ListItem } from 'material-ui';
 import HouseDetailsContainer from '../containers/HouseDetailsContainer';
 import EditHouse from '../components/EditHouse';
 import EditHouseContainer from '../containers/EditHouseContainer';
-import { SHOW_HOUSE_SUCCESS } from "../constants/ActionTypes";
 import { red100, red900, fullWhite, lightWhite, pinkA100, yellow300 } from "material-ui/styles/colors";
-import GoogleMaps from '../containers/GoogleMapContainer';
+import Map from 'pigeon-maps'
+
+
 
 class HouseContainer extends Component {
   
@@ -22,15 +23,22 @@ class HouseContainer extends Component {
     const { actions } = this.props;  
     let id= this.props.match.params.id;
     let house= this.props.houses[id-1];
-    let lon = 23.8521;
-    let lat = 61.4481;
-    console.log('Housecontainter id= ', id, + ' house= ', house);
+    let address= this.props.houses[id-1].name;
+    let lat = parseFloat(this.props.houses[id-1].lat); //.substr(0, 7);
+    let lon = parseFloat(this.props.houses[id-1].lon); //.substr(0, 7);
+    console.log('Housecontainter id= ', id, ' house= ', house);
+    console.log('HouseContainer lat: ',lat , ' lon: ', lon);
 
     const style = { margin: 12 };
+
+    
     return (
-        <div>
-         
-         <GoogleMaps lon={lon} lat={lat}/>
+        <div style={{marginTop: 7, marginLeft: 7}}>
+        
+        <Map center={[lat, lon]} zoom={16} width={400} height={300}>
+    
+ 
+       </Map>
 
          <h3> <ListItem primaryText= {'Talo numero ' + id} /></h3>
          

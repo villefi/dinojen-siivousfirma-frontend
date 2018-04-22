@@ -6,8 +6,9 @@ import HouseDetails from '../components/HouseDetails';
 import * as HouseActions from '../actions/Houses';
 import { push } from 'react-router-redux';
 import { ListItem } from 'material-ui';
-import GoogleMaps from '../containers/GoogleMapContainer';
+// import GoogleMaps from '../containers/GoogleMapContainer';
 // import Geocoder from 'react-native-geocoding';
+//import GoogleMapReact from 'google-map-react'
 
 
 class HouseDetailsContainer extends Component {
@@ -16,9 +17,18 @@ class HouseDetailsContainer extends Component {
     this.props.houseActions.detailsHouse(this.props.id);
   }
   
+
+  
   render() {
     let id = this.props.id;
     let talo = this.props.houses[id-1];
+
+  //  fetch('https://maps.googleapis.com/maps/api/geocode/json?address=Tiaisentie 15, Tampere' + ', &key=AIzaSyD63e-TwdH-PJub9gzTblUSnoFhJyyLd7Q')
+  //      .then((response) => response.json())
+        
+ //       .then((responseJson) => {
+ //           console.log('ADDRESS GEOCODE is BACK!! => ' + JSON.stringify(responseJson));
+ //   })
   
   //  Geocoder.from("Tampere");
 

@@ -58,12 +58,6 @@ export default function houses(state = initialState, action) {
   
     case DETAILS_HOUSE:
         return { ...state, isLoading : true};
-          
-    //      state.map(house =>
-    //      house.id === action.payload.id ?
-    //        Object.assign({}, house, { name: action.payload.name }) :
-    //        house
-    //      };
   
     case DETAILS_HOUSE_SUCCESS:
           return { houses : action.payload.houses, isLoading : false, error : null};

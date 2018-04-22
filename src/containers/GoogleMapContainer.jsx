@@ -5,12 +5,15 @@ import GoogleMapReact from 'google-map-react'
 class GoogleMap extends Component {
     componentDidMount() {
         new google.maps.Map(this.refs.map, {
-            zoom: 15,
+            zoom: 17,
             
             center: {
                 lat: this.props.lat,
                 lng: this.props.lon
             }
+        
+
+
         });
     }
 
@@ -23,7 +26,7 @@ class GoogleMap extends Component {
       };
 
         console.log('Google_maps', this.refs.map);
-          return <div ref="map" style={mapStyle} />;
+          return <div ref="map" style={mapStyle} Marker name={'Current location'} />;
     }
 }
 

@@ -17,7 +17,7 @@ class AddHouse extends Component {
     }
     render () {
       return (
-      <div>
+      <div style={{marginLeft:20, marginTop: 50}}>
         <h2> - Lisää uusi talo -</h2>
         <Form ref='simpleForm'>
             <Field
