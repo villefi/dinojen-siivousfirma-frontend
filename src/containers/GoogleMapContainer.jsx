@@ -1,67 +1,86 @@
-import React, { Component } from 'react'
-import GoogleMapReact from 'google-map-react'
+import React from 'react';
+import { GoogleApiWrapper, InfoWindow, Map, Marker } from 'google-maps-react';
+// import Paper from 'material-ui/Paper';
+// import Typography from 'material-ui/Typography';
+// import { typography } from 'material-ui/styles';
 
 
-class GoogleMap extends Component {
-    componentDidMount() {
-        new google.maps.Map(this.refs.map, {
-            zoom: 17,
-            
-            center: {
-                lat: this.props.lat,
-                lng: this.props.lon
-            }
-        
-
-
-        });
+class GoogleMaps extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showingInfoWindow: true,
+      activeMarker: {},
+      selectedPlace: {}
     }
-
-    render() {
-
-      const mapStyle = {
-        width: 500,
-        height: 300,
-        border: '1px solid black'
-      };
-
-        console.log('Google_maps', this.refs.map);
-          return <div ref="map" style={mapStyle} Marker name={'Current location'} />;
-    }
-}
-
-export default GoogleMap;
-
-/*
-
-const AnyReactComponent = ({ text }) => <div>{ text }</div>;
-
-class GoogleMap extends Component {
-  static defaultProps = {
-    center: { lat: 40.7446790, lng: -73.9485420 },
-    zoom: 11
+    // binding this to event-handler functions
+    this.onMarkerClick = this.onMarkerClick.bind(this);
+    this.onMapClick = this.onMapClick.bind(this);
   }
-render() {
+  onMarkerClick = (props, marker, e) => {
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
+  }
+  onMapClick = (props) => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: true,
+        activeMarker: null
+      });
+    }
+  }
+  render() {
+    
+    const style = {
+      //width: 500,
+      //height: 300,
+      width: '50vw',
+      height: '30vh',
+  //    marginLeft: 'auto',
+  //    marginRight: 'auto',
+      position: 'relative',
+      border : '1px solid black'
+      
+    }
     return (
-      <div className='google-map'>
-        <GoogleMapReact
+      <Map
+        item
+        xs = { 12 }
+        style = { style }
+        mapType = "satellite"
+        containerStyle={{ position: 'relative'}}
+        google = { this.props.google }
+        onClick = { this.onMapClick }
+        zoom = { 18 }
+        initialCenter = {{ lat: this.props.lat, lng: this.props.lon }}
         
-         bootstrapURLKeys={{ key: process.env.API_KEY }}
-          defaultCenter={ this.props.center }
-          defaultZoom={ this.props.zoom }>
-          <AnyReactComponent
-            lat={ 40.7473310 }
-            lng={ -73.8517440 }
-            text={ 'Wheres Waldo?' }
-          />
-        </GoogleMapReact>
-      </div>
-    )
+      >
+        <Marker
+          onClick = { this.onMarkerClick }
+          title = { this.props.address }
+        //  animation = { google.maps.Animation.DROP}
+          position = {{ lat: this.props.lat, lng: this.props.lon }}
+          name = { this.props.address  }
+          icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+        />
+         
+        <InfoWindow
+          marker = { this.state.activeMarker }
+          visible = { this.state.showingInfoWindow }>
+            <div>
+              <h1>{this.props.address }</h1>
+            </div>
+        </InfoWindow>
+        
+        
+      </Map>
+    );
   }
-}
+}  //  visible={true} marker={this.state.activeMarker}
 
-// const API_KEY = '49d787f165f444698e921a6a2fb8106e';
-
-export default GoogleMap;
-
-*/
+export default GoogleApiWrapper({
+    apiKey: 'AIzaSyD63e-TwdH-PJub9gzTblUSnoFhJyyLd7Q'
+})(GoogleMaps)

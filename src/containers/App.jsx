@@ -8,12 +8,13 @@ import HouseContainer from '../containers/HouseContainer';
 import AddHouseContainer from "./AddHouseContainer";
 
 
+
 class App extends Component {
   render() {
     return (
       <div>
           <div>
-            <h3> Dino Siivous Oy  </h3>
+            <h2>- - - - Dino Siivous Oy  </h2>
             <HouseListContainer/>
             
             <AddHouseContainer/>

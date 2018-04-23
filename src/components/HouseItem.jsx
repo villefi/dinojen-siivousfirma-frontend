@@ -24,14 +24,14 @@ class HouseItem extends Component {
     let loppu = house.date.substr(paikka + 1);
     let clm = parseInt(loppu.substring(0, 2));
 
-    console.log('clday: ', clday, ' clm: ', clm);
-    console.log('today: ', today, ' kuu: ', kuu);
-    console.log('tänään on :', today, ' ja ',days[pva], ' , ', pva);
+  //  console.log('clday: ', clday, ' clm: ', clm);
+  //  console.log('today: ', today, ' kuu: ', kuu);
+  //  console.log('tänään on :', today, ' ja ',days[pva], ' , ', pva);
   
     if (kuu === clm) ero = today-clday;  // mikään paikka ei ole siivoamatta yli kuukautta
     else if (kuu === clm+1) ero = today + (dim[kuu-2]-clday);
     else ero=999;
-    console.log('ERO: ', ero, 'dim: ', dim[kuu-1], 'kuu-1: ', kuu-1, 'dimkoko: ', dim);
+  //  console.log('ERO: ', ero, 'dim: ', dim[kuu-1], 'kuu-1: ', kuu-1, 'dimkoko: ', dim);
     
 
     if ( ero === 0 ) when = 'tänään ' + days[pva] + ' kello ' + house.time + '.';

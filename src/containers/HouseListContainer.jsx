@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from "react";
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import HouseList from '../components/HouseList';
+import GmapHouseList from '../containers/GmapAllContainer'
 import * as HouseActions from '../actions/Houses';
 import { push } from 'react-router-redux';
 
@@ -18,12 +19,13 @@ class HouseListContainer extends Component {
     
     return (
       <div>
-        <HouseList houses={ houses } navigateToHouse={ this.props.navigateToHouse }/>
+        <GmapHouseList houses={ houses } navigateToHouse={ this.props.navigateToHouse }/>
+        <HouseList houses={ houses } navigateToHouse={ this.props.navigateToHouse }/>     
       </div>
     );
   }
 }
-
+// <HouseList houses={ houses } navigateToHouse={ this.props.navigateToHouse }/>
 // reactin apufunktio, jolla voidaan tehdä propseista pakollisia
 HouseListContainer.propTypes = {
   houses: PropTypes.array.isRequired

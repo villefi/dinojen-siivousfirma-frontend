@@ -9,7 +9,13 @@ import HouseDetailsContainer from '../containers/HouseDetailsContainer';
 import EditHouse from '../components/EditHouse';
 import EditHouseContainer from '../containers/EditHouseContainer';
 import { red100, red900, fullWhite, lightWhite, pinkA100, yellow300 } from "material-ui/styles/colors";
-import Map from 'pigeon-maps'
+// import Map from 'pigeon-maps'
+//<Map center={[lat, lon]} zoom={16} width={400} height={300}>
+// </Map>
+
+
+import GoogleMaps from '../containers/GoogleMapContainer';
+import GoogleMapReact from 'google-map-react'
 
 
 
@@ -35,14 +41,15 @@ class HouseContainer extends Component {
     return (
         <div style={{marginTop: 7, marginLeft: 7}}>
         
-        <Map center={[lat, lon]} zoom={16} width={400} height={300}>
-    
- 
-       </Map>
+        
+        <GoogleMaps lon={lon} lat={lat} address = {address}/>
 
          <h3> <ListItem primaryText= {'Talo numero ' + id} /></h3>
          
          <HouseDetailsContainer id={id}/>
+         
+         
+         
          <RaisedButton primary={true} style={style} onClick ={ () => actions.cleanHouse(id) }> Siivoa talo </RaisedButton>
          <RaisedButton secondary={true} style={style} onClick ={ () => actions.dirtHouse(id) }> Sotke talo </RaisedButton>
          <RaisedButton backgroundColor={yellow300} style={style} onClick ={() => this.setState({ show: !show }) }> Avaa muokkaus </RaisedButton>
