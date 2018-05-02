@@ -14,7 +14,6 @@ const defaultStyle = {
 class GmapHouseList extends Component {
   constructor(props, context) {
     super(props, context);
-   
     }
 
   render() {
@@ -75,20 +74,3 @@ export default GoogleApiWrapper({
     apiKey: 'AIzaSyD63e-TwdH-PJub9gzTblUSnoFhJyyLd7Q'
 })(GmapHouseList)
 
-
-/*  
-
-icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
-
-{house.done===1 && <Marker
-                    house={house}  
-                          key={house.id}
-                          house={house}
-                          title = { house.name + ' ' + house.worker }
-                          position = {{ lat: house.lat, lng: house.lon }}
-                          name = { house.id  }
-                          icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
-                          onClick = { () => navigateToHouse(house.id) }
-                        /> }
-        
-           */

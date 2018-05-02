@@ -5,12 +5,14 @@ import HouseList from '../components/HouseList';
 import GmapHouseList from '../containers/GmapAllContainer'
 import * as HouseActions from '../actions/Houses';
 import { push } from 'react-router-redux';
+import { Link } from 'react-router-dom';
 
 
 
 class HouseListContainer extends Component {
-
-    componentDidMount() {
+  constructor(props, context) {    // componentDidMount
+    super(props, context);
+  
     this.props.houseActions.fetchHouses();
   }
   
@@ -19,7 +21,9 @@ class HouseListContainer extends Component {
     
     return (
       <div>
+        <Link to="/login">Kirjaudu sisään - ulos</Link>
         <GmapHouseList houses={ houses } navigateToHouse={ this.props.navigateToHouse }/>
+       
         <HouseList houses={ houses } navigateToHouse={ this.props.navigateToHouse }/>     
       </div>
     );

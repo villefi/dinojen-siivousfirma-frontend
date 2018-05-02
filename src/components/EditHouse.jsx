@@ -41,7 +41,7 @@ class EditHouse extends Component {
             />
             <Field
               name='name'
-              label='Anna talon osoite'
+              label='Anna talon osoite (huom, paikka kartalla ei muutu)'
               type='text'
               defaultValue= {this.props.house.name}
             />

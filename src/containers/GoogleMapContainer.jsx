@@ -39,8 +39,8 @@ class GoogleMaps extends React.Component {
       //height: 300,
       width: '50vw',
       height: '30vh',
-  //    marginLeft: 'auto',
-  //    marginRight: 'auto',
+      marginLeft: '20',
+      marginRight: 'auto',
       position: 'relative',
       border : '1px solid black'
       

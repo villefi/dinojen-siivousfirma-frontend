@@ -5,12 +5,11 @@ import { Provider } from 'react-redux';
 
 import createHistory from 'history/createBrowserHistory';
 
+import LogInContainer from './containers/LogInContainer';
 import App from './containers/App';
 import HouseContainer from './containers/HouseContainer';
 import CleanHouseContainer from './containers/CleanHouseContainer';
 
-import GameApp from './containers/GameApp';
-import GameContainer from './containers/GameContainer';
 import configureStore from './store/configureStore';
 
 import { Route } from 'react-router';
@@ -40,8 +39,7 @@ ReactDOM.render(
         <div>
           <Route exact path="/" component={App}/>
           <Route path="/houses/:id" component={HouseContainer}/>
-          <Route exact path="/games" component={GameApp}/>
-          <Route path="/game/:id" component={GameContainer}/>
+          <Route path="/login" component={LogInContainer}/>
         </div>
       </MuiThemeProvider>
     </ConnectedRouter>

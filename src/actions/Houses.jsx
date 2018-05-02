@@ -1,6 +1,41 @@
 import * as types from '../constants/ActionTypes';
 import axios from 'axios';
 
+// LogIn
+
+export function logIn(tunnus ) {
+  localStorage.clear();
+  return function (dispatch, getState) {
+    dispatch({ type: types.LOG_IN });
+    return axios({
+     method: 'post',
+     url: `${process.env.API_URL}/login`,   
+     withCredentials: true,
+      headers: { 'Content-Type': 'application/json'},
+      data: {
+        username : tunnus.username,
+        password : tunnus.password
+      }
+    })
+    .then((response) => dispatch(logInSuccess(response.data, tunnus))) 
+    .catch((error) => dispatch(logInFailure(error)));
+  };
+}
+
+export function logInSuccess(vastaus, tunnus){
+  console.log(' LOG_IN_SUCCESS: ', vastaus, ' tunnus: ', tunnus);
+  window.localStorage.setItem('loggedInUser', (tunnus.username));
+  console.log(' window.localStorage: ',  window.localStorage);
+ 
+  return { type: types.LOG_IN_SUCCESS, payload : { vastaus: vastaus } };
+}
+
+export function logInFailure(error){
+  console.log(' LOG_IN_FAILURE: ', error);
+  window.localStorage.setItem('loggedInUser', '');
+  return { type: types.LOG_IN_FAILURE, payload : { error: error } };
+}
+
 
 // LISÄÄ TALO
 
@@ -11,12 +46,14 @@ export function addHouse(name, description, pm, worker ) {
     return axios({
       method: 'post',
       url: `${process.env.API_URL}/houses/add`,
+      withCredentials: true, 
       headers: [],
       data: {
         name: name,
         description: description,
         pm : pm,
         worker : worker
+   
       }
     })
     .then((response) => dispatch(addHouseSuccess(response.data[response.data.length-1]))) 
@@ -38,12 +75,18 @@ export function addHouseFailure(error){
 // HAE KAIKKI TALOT
 
   export function fetchHouses() {
+    console.log('hae kaikki talot');
     return function (dispatch, getState) {
       dispatch({ type: types.FETCH_HOUSES });
-  
+      
       return axios({
         method: 'get',
-        url: `${process.env.API_URL}/houses`
+        url: `${process.env.API_URL}/houses`,
+        withCredentials: true, 
+        headers: [],
+        data: { 
+         }       
+       
  
       })
       .then((response) => dispatch(fetchHousesSuccess(response.data)))
@@ -62,14 +105,17 @@ export function addHouseFailure(error){
   // SIIVOA TALO
 
   export function cleanHouse(id) {
+    console.log('window.localStorage.loggedInUser', window.localStorage.loggedInUser );
     return function (dispatch, getState) {
       dispatch({ type: types.CLEAN_HOUSE });
       return axios({
         method: 'post',
         url: `${process.env.API_URL}/houses/done/` +id + `/1`,
+        withCredentials: true, 
         headers: [],        
         data: { 
-          id: id          
+          id: id,
+          user: window.localStorage.loggedInUser         
         }       
       })
 
@@ -94,8 +140,10 @@ export function addHouseFailure(error){
     dispatch({ type: types.DIRT_HOUSE });
     return axios({
       method: 'post',
+      
       url: `${process.env.API_URL}/houses/done/` + id + `/0`,
-      headers: [],        
+      withCredentials: true, 
+      headers: [],
       data: { 
         id: id          
       }       
@@ -124,7 +172,7 @@ export function dirtHouseError(error) {
       return axios({
         method: 'get',
         url: `${process.env.API_URL}/houses/` +id,
-    
+        withCredentials: true,     
        headers: [],        
        data: { 
          id: id          
@@ -152,6 +200,7 @@ export function editHouse(id, name, description, pm, worker ) {
     return axios({
       method: 'post',
       url: `${process.env.API_URL}/edit/` +id,
+      withCredentials: true, 
       headers: [],
       data: {
         id : id,

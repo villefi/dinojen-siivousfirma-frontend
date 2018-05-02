@@ -6,6 +6,7 @@ import * as HouseActions from '../actions/Houses';
 import { RaisedButton, HardwareMouse } from 'material-ui';
 import { red100, red900, fullWhite, lightWhite, blue300, yellow300 } from "material-ui/styles/colors";
 
+
 class AddHouseContainer extends Component {
 
   state = { show : false };
@@ -20,7 +21,7 @@ class AddHouseContainer extends Component {
 
         <RaisedButton backgroundColor={blue300} style={style} onClick ={() => this.setState({ show: !show }) }> Avaa talon lisäys </RaisedButton>
              { show 
-                    ? <div> <AddHouse addHouse ={ houseActions.addHouse }/></div>
+                    ? <div><AddHouse addHouse ={ houseActions.addHouse }/></div>
                     : null
                 }
 
